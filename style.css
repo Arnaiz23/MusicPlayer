@@ -200,12 +200,12 @@ header {
   place-items: center;
 }
 
-#toggle-input:checked ~ .toggle-circle {
+[data-theme="dark"] #toggle-input:checked ~ .toggle-circle {
   /* background-color: #fff; */
   transform: translate(25px, -50%);
 }
 
-#toggle-input:checked {
+[data-theme="dark"] #toggle-input:checked {
   background-color: #00c897;
   border: 3px solid #fff;
 }

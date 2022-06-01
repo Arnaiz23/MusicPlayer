@@ -34,33 +34,20 @@ const song = $("#song")
 const duration = $("#duration")
 const currentDuration = $("#currentDuration")
 const btnChangeTheme = $(".changeTheme")
-
-
+const lessTime = $("#less")
+const moreTime = $("#more")
 
 img.src = LIST_MUSIC[numberSong].img
 nameSong.innerHTML = LIST_MUSIC[numberSong].name
 author.innerHTML = LIST_MUSIC[numberSong].author
 song.src = LIST_MUSIC[numberSong].song
 song.onloadedmetadata = () => {
-    duration.innerHTML = (song.duration / 60).toFixed(2)
+    duration.innerHTML = ((song.duration / 60).toFixed(2)).replace(".", ":")
     currentDuration.innerHTML = "0.00"
 }
 
 
-next.addEventListener("click", () => {
-    if (numberSong === LIST_MUSIC.length - 1) {
-        numberSong = 0
-    } else {
-        numberSong++
-    }
-    img.src = LIST_MUSIC[numberSong].img
-    nameSong.innerHTML = LIST_MUSIC[numberSong].name
-    author.innerHTML = LIST_MUSIC[numberSong].author
-    song.src = LIST_MUSIC[numberSong].song
-    duration.innerHTML = (song.duration / 60).toFixed(2)
-    pause.classList.remove("btnHidden")
-    play.classList.add("btnHidden")
-})
+next.addEventListener("click", changeNextSong)
 
 previous.addEventListener("click", () => {
     if (numberSong === 0) {
@@ -72,7 +59,7 @@ previous.addEventListener("click", () => {
     nameSong.innerHTML = LIST_MUSIC[numberSong].name
     author.innerHTML = LIST_MUSIC[numberSong].author
     song.src = LIST_MUSIC[numberSong].song
-    duration.innerHTML = (song.duration / 60).toFixed(2)
+    duration.innerHTML = ((song.duration / 60).toFixed(2)).replace(".", ":")
     pause.classList.remove("btnHidden")
     play.classList.add("btnHidden")
 })
@@ -83,7 +70,7 @@ play.addEventListener("click", () => {
     song.play()
     pause.classList.remove("btnHidden")
     play.classList.add("btnHidden")
-    duration.innerHTML = (song.duration / 60).toFixed(2)
+    duration.innerHTML = ((song.duration / 60).toFixed(2)).replace(".", ":")
 })
 
 pause.addEventListener("click", () => {
@@ -97,7 +84,7 @@ pause.addEventListener("click", () => {
 },1) */
 
 song.ontimeupdate = () => {
-    currentDuration.innerHTML = (song.currentTime / 60).toFixed(2)
+    currentDuration.innerHTML = ((song.currentTime / 60).toFixed(2)).replace(".", ":")
     setProgress();
 }
 
@@ -125,4 +112,29 @@ toggleSwitch.addEventListener("change", switchTheme, false)
 song.addEventListener("play", () => {
     pause.classList.remove("btnHidden")
     play.classList.add("btnHidden")
+})
+
+song.addEventListener("ended", changeNextSong)
+
+function changeNextSong() {
+    if (numberSong === LIST_MUSIC.length - 1) {
+        numberSong = 0
+    } else {
+        numberSong++
+    }
+    img.src = LIST_MUSIC[numberSong].img
+    nameSong.innerHTML = LIST_MUSIC[numberSong].name
+    author.innerHTML = LIST_MUSIC[numberSong].author
+    song.src = LIST_MUSIC[numberSong].song
+    duration.innerHTML = ((song.duration / 60).toFixed(2)).replace(".", ":")
+    pause.classList.remove("btnHidden")
+    play.classList.add("btnHidden")
+}
+
+moreTime.addEventListener("click", () => {
+    song.currentTime = song.currentTime + 18
+})
+
+lessTime.addEventListener("click", () => {
+    song.currentTime = song.currentTime - 18
 })
