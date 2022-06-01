@@ -46,7 +46,7 @@ author.innerHTML = LIST_MUSIC[numberSong].author
 song.src = LIST_MUSIC[numberSong].song
 song.onloadedmetadata = () => {
     duration.innerHTML = ((song.duration / 60).toFixed(2)).replace(".", ":")
-    currentDuration.innerHTML = "0.00"
+    currentDuration.innerHTML = "0:00"
 }
 
 // * -----------------------------------------------------------------

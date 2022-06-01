@@ -39,7 +39,8 @@ body {
 .layer {
   border: 3px solid #000;
   border-radius: 20px;
-  width: 400px;
+  width: 90%;
+  max-width: 400px;
   height: 600px;
   position: relative;
   overflow: hidden;
@@ -209,7 +210,3 @@ header {
   background-color: #00c897;
   border: 3px solid #fff;
 }
-
-/* .fa-solid {
-    z-index: 10;
-} */
