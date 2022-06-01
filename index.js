@@ -37,6 +37,9 @@ const btnChangeTheme = $(".changeTheme")
 const lessTime = $("#less")
 const moreTime = $("#more")
 
+
+// * ---------------------------- INITIAL STATE----------------------------
+
 img.src = LIST_MUSIC[numberSong].img
 nameSong.innerHTML = LIST_MUSIC[numberSong].name
 author.innerHTML = LIST_MUSIC[numberSong].author
@@ -46,7 +49,9 @@ song.onloadedmetadata = () => {
     currentDuration.innerHTML = "0.00"
 }
 
+// * -----------------------------------------------------------------
 
+// * ---------------------------- CHANGE SONG --------------------------------
 next.addEventListener("click", changeNextSong)
 
 previous.addEventListener("click", () => {
@@ -64,7 +69,9 @@ previous.addEventListener("click", () => {
     play.classList.add("btnHidden")
 })
 
-// const song = new Audio("./music/Salvavidas.mp3")
+// * -----------------------------------------------------------------
+
+// * ---------------------------- PLAY / PAUSE -------------------------------
 
 play.addEventListener("click", () => {
     song.play()
@@ -79,9 +86,9 @@ pause.addEventListener("click", () => {
     pause.classList.add("btnHidden")
 })
 
-/* window.setInterval(() => {
-    currentDuration.innerHTML = (song.currentTime / 60).toFixed(2)
-},1) */
+// * -----------------------------------------------------------------
+
+// * ----------------------- CHANGE THE ACTUAL TIME ------------------------
 
 song.ontimeupdate = () => {
     currentDuration.innerHTML = ((song.currentTime / 60).toFixed(2)).replace(".", ":")
@@ -92,6 +99,10 @@ function setProgress() {
     let percentage = (song.currentTime / song.duration) * 100
     $(".progress").style.width = percentage + "%"
 }
+
+// * -----------------------------------------------------------------
+
+// * ---------------------------- THEMES ---------------------------------
 
 function switchTheme(e) {
     if (e.target.checked) {
@@ -109,11 +120,17 @@ const toggleSwitch = $("#toggle-input")
 
 toggleSwitch.addEventListener("change", switchTheme, false)
 
+// * -----------------------------------------------------------------
+
+// * IF THE SONG START AT LOAD THE PAGE
 song.addEventListener("play", () => {
     pause.classList.remove("btnHidden")
     play.classList.add("btnHidden")
 })
 
+// * -----------------------------------------------------------------
+
+// * IF THE SONG END
 song.addEventListener("ended", changeNextSong)
 
 function changeNextSong() {
@@ -131,6 +148,10 @@ function changeNextSong() {
     play.classList.add("btnHidden")
 }
 
+// * -----------------------------------------------------------------
+
+// * -------------------------- CHANGE THE TIME ------------------------------
+
 moreTime.addEventListener("click", () => {
     song.currentTime = song.currentTime + 18
 })
@@ -138,3 +159,5 @@ moreTime.addEventListener("click", () => {
 lessTime.addEventListener("click", () => {
     song.currentTime = song.currentTime - 18
 })
+
+// * -----------------------------------------------------------------
