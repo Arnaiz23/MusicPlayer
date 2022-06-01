@@ -121,3 +121,8 @@ function switchTheme(e) {
 const toggleSwitch = $("#toggle-input")
 
 toggleSwitch.addEventListener("change", switchTheme, false)
+
+song.addEventListener("play", () => {
+    pause.classList.remove("btnHidden")
+    play.classList.add("btnHidden")
+})

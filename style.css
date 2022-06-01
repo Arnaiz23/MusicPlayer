@@ -196,7 +196,7 @@ header {
   transform: translateY(-50%);
   cursor: pointer;
   transition: all 0.3s;
-  display: grid;
+  display: grid !important;
   place-items: center;
 }
 
