@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,28 +10,40 @@
     <script src="https://kit.fontawesome.com/d0135093a4.js" crossorigin="anonymous"></script>
     <title>MusicPlayer</title>
 </head>
+
 <body>
+    <!-- <button class="changeTheme">Change theme</button> -->
     <div class="layer">
         <header>
-            <h3>List</h3>
+            <label for="toggle-input" class="toggle">
+                <input type="checkbox" id="toggle-input" />
+                <span class="toggle-circle fa-solid fa-sun"></span>
+            </label>
+            <h3>Lista</h3>
             <h4>Prueba</h4>
         </header>
         <div class="imageContainer">
             <img src="" alt="">
         </div>
         <div class="names">
-            <h1>Prueba</h1>
-            <h3>Autor</h3>
+            <h1></h1>
+            <h3></h3>
         </div>
         <footer>
-            
-            <div class="line"></div>
+
+            <div class="containerLine">
+                <span id="currentDuration"></span>
+                <div class="line">
+                    <span class="progress"></span>
+                </div>
+                <span id="duration"></span>
+            </div>
             <div class="options">
                 <span>
                     <i class="fa-solid fa-backward" id="previous"></i>
                 </span>
                 <span>
-                    <i class="fa-solid fa-circle-pause" id="pause"></i>
+                    <i class="fa-solid fa-circle-pause btnHidden" id="pause"></i>
                     <i class="fa-solid fa-circle-play" id="play"></i>
                 </span>
                 <span>
@@ -41,4 +54,5 @@
     </div>
     <script src="./index.js"></script>
 </body>
+
 </html>
